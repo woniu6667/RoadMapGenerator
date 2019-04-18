@@ -16,7 +16,7 @@
 import networkx as nx
 import  matplotlib.pyplot as plt
 
-f = open("roadNet-CA.txt","r")
+f = open("road-usroads.mtx","r")
 x = f.read()
 y = x.split()
 # even numbers = node
@@ -25,7 +25,7 @@ y = x.split()
 G = nx.dodecahedral_graph()
 i = 0
 print("graph size = " + str(len(y)))
-while(i != 20000):
+while(i != len(y)):
     if( i % 2 == 0):
         G.add_node(y[i])
     else:
