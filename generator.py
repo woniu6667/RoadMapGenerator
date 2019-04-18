@@ -25,7 +25,7 @@ y = x.split()
 G = nx.dodecahedral_graph()
 i = 0
 print("graph size = " + str(len(y)))
-while(i != 10000 ):# len(y)):
+while(i != len(y)):
     if( i % 2 == 0):
         G.add_node(y[i])
     else:
@@ -33,8 +33,8 @@ while(i != 10000 ):# len(y)):
     i+=1
     print(i)
 
-pos = nx.complete_graph(G)
+pos = nx.spring_layout(G)
 #plt.subplot(121)
-nx.draw_networkx(G, pos, width=.09, node_color="red", node_size=.01, with_labels=False)
+nx.draw_networkx(G, pos, node_color="red", node_size=1, with_labels=False)
 #plt.show()
-plt.savefig("ohgod.png", dpi=2000, bbox_inches='tight', format="PNG")
+plt.savefig("ohgod.png", dpi=1000, bbox_inches='tight', format="PNG")
