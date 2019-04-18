@@ -33,8 +33,8 @@ while(i != 10000 ):# len(y)):
     i+=1
     print(i)
 
-pos = nx.complete_graph(G)
+#pos = nx.complete_graph(G)
 #plt.subplot(121)
-nx.draw_networkx(G, pos, width=.09, node_color="red", node_size=.01, with_labels=False)
+nx.draw_networkx(G, width=.09, node_shape = ".", node_color="red", node_size=10, with_labels=False)
 #plt.show()
-plt.savefig("ohgod.png", dpi=2000, bbox_inches='tight', format="PNG")
+plt.savefig("roadyroadroad.png", dpi=1000, bbox_inches='tight', format="PNG")
