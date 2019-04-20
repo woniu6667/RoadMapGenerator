@@ -6,18 +6,8 @@ import sys, random, string
 #     print("Usage: python generator.py <Node Size> <Cluster Size>")
 #     sys.exit(1)
 
-def randhex():
-    hex_c = ""
-    for i in range(6):
-        hex_c += random.choice("ABCDEF0123456789")
-    return hex_ctrailer
 
-# def RoadName():
-#     rn = ""
-#     for i in rantrailer
-#         rn += random.choice(string.ascii_uppercase)
-#     return rn
-
+    
 # def RoadExit(name, length):
 #     name += "-"
 #     name += str(i+1)
@@ -39,8 +29,21 @@ def randhex():
 #     return split
 
     #clusteredNode = clusterGen(road)
+def randhex():
+    hex_c = ""
+    for i in range(6):
+        hex_c += random.choice("ABCDEF0123456789")
+    return hex_c
+
+def NetworkName():
+    rn = ""
+    for i in 2:
+        rn += random.choice(string.ascii_uppercase)
+    rn + "-"
+    return rn
+
 def gengraph(nodesize):
-    G = nx.Graph()
+    G = nx.path_graph()
     road = []
     edges = []
     clusteredNode = []
@@ -54,9 +57,22 @@ def gengraph(nodesize):
                 G.add_edge(road[i], randy)
     return G
 
-x = gengraph(int(sys.argv[1]))
-y = gengraph(int(sys.argv[1]))
-finalgraph = nx.union(x,y, rename=("lol-","yeet"))
+cluster = []
+def clusters(num):
+    x = []
+    for i in range(num):
+        x[i] = gengraph(int(sys.argv[2]))
+    return x
+
+def finalConnection(graph):
+    name = []
+    finalgraph = nx.Graph()
+    for i in range(len(graph)):
+        name[i].append(NetworkName())
+        for j in range(len(graph[i])):
+            finalgraph = nx.union_all(graph[i])
+        
+finalgraph = nx.union(x,y, rename=("lol-","yeet-"))
 finalgraph.add_edge("lol-0","yeet-0")
 for i in range(1, int(int(sys.argv[1])/2)): 
     randy = random.randint(1, x.size())
@@ -64,9 +80,11 @@ for i in range(1, int(int(sys.argv[1])/2)):
     lol = "lol-" + str(randy)
     yeet = "yeet-" + str(rando)
     finalgraph.add_edge(lol,yeet)
+
+
 #print(randhex())
 plt.subplot(121)
 options = { 'width':.09, 'node_shape':'.', 'node_color':"red", 'node_size':.1, 'with_labels':False} 
 nx.draw_networkx(finalgraph, **options)
-plt.show()
- #plt.savefig("roadyRoadMcRoad.png", dpi=1250, bbox_inches='tight', format="PNG")
+#plt.show()
+plt.savefig("roadyRoadMcRoad.png", dpi=1250, bbox_inches='tight', format="PNG")
