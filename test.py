@@ -2,14 +2,12 @@ import networkx as nx
 import  matplotlib.pyplot as plt
 import sys, random, string
 
+color_map =[]
+name = []
+colorlist = []
+
 def randhex():
     hex_c = "#"
-    for i in range(6):
-        hex_c += random.choice("ABCDEF0123456789")
-        print(hex_c)
-    return hex_c
-def randhex():
-    hex_c = ""
     for i in range(6):
         hex_c += random.choice("ABCDEF0123456789")
     return hex_c
@@ -29,7 +27,6 @@ def gengraph(nodesize):
     for i in range(1,nodesize):
         road.append(i)
         G.add_node(i)
-
     for i in range(1, len(road)): 
             randy = random.randint(1, nodesize)
             if(road[i] != randy):
@@ -42,6 +39,7 @@ def clusters(num):
     for i in range(num):
         generateGraph = gengraph(nodesize)
         x.append(generateGraph)
+        color_map.append(randhex())
     return x
 
 def setEdges(graph, name, finalgraph):
@@ -54,7 +52,6 @@ def setEdges(graph, name, finalgraph):
             finalgraph.add_edge(randoName,randyName)
 
 def finalConnection(graph):
-    name = []
     finalgraph = nx.Graph()
     for i in range(len(graph)):
         name.append(NetworkName())
@@ -66,14 +63,19 @@ if(len(sys.argv) != 4):
     print("Usage: python test.py <Number of Clusters> <Number of Nodes> <Number of Cluster Edges>")
     sys.exit(1)
 
+
 clustersize = int(sys.argv[1])
 Graphy = clusters(clustersize)
 finalgraph = finalConnection(Graphy)
+
 for node in finalgraph:
-    
-#print(randhex())
+    for i in range(len(name)):
+        if(name[i] in node):
+            colorlist.append(color_map[i])
+
+
 plt.subplot(121)
-options = { 'width':.09,'font_size':2, 'node_shape':'.', 'node_color':"red", 'node_size':.1, 'with_labels':True} 
-nx.draw_networkx(finalgraph, **options)
+options = { 'width':.09,'font_size':2,'node_size':2, 'with_labels':True} 
+nx.draw_networkx(finalgraph, node_color=colorlist, **options)
 #plt.show()
 plt.savefig("roadyRoadMcRoad.png", dpi=1250, bbox_inches='tight', format="PNG")
