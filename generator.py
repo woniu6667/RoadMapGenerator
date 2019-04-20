@@ -78,4 +78,4 @@ plt.subplot(121)
 options = { 'width':.09,'font_size':2,'node_size':2, 'with_labels':True} 
 nx.draw_networkx(finalgraph, node_color=colorlist, **options)
 #plt.show()
-plt.savefig("roadyRoadMcRoad.png", dpi=1250, bbox_inches='tight', format="PNG")
+plt.savefig("RoadMap.png", dpi=1250, bbox_inches='tight', format="PNG")
