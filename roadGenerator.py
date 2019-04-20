@@ -75,7 +75,7 @@ for node in finalgraph:
 
 
 plt.subplot(121)
-options = { 'width':.09,'font_size':2,'node_size':2, 'with_labels':True} 
-nx.draw_networkx(finalgraph, node_color=colorlist, **options)
+options = { 'width':.09, 'font_size':2,'node_size':2, 'with_labels':True} 
+nx.draw_networkx(finalgraph, alpha=.7, node_color=colorlist, **options)
 #plt.show()
 plt.savefig("RoadMap.png", dpi=1250, bbox_inches='tight', format="PNG")
