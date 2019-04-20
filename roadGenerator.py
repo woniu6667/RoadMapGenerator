@@ -2,6 +2,11 @@ import networkx as nx
 import  matplotlib.pyplot as plt
 import sys, random, string
 
+if(len(sys.argv) != 4):
+    print("Usage: python generator.py <Number of Clusters> <Number of Nodes> <Number of Cluster Edges>")
+    sys.exit(1)
+
+
 color_map =[]
 name = []
 colorlist = []
@@ -58,11 +63,6 @@ def finalConnection(graph):
     finalgraph = nx.union_all(graph, rename=(name))
     setEdges(graph, name, finalgraph)
     return finalgraph
-
-if(len(sys.argv) != 4):
-    print("Usage: python generator.py <Number of Clusters> <Number of Nodes> <Number of Cluster Edges>")
-    sys.exit(1)
-
 
 clustersize = int(sys.argv[1])
 Graphy = clusters(clustersize)
